@@ -160,3 +160,27 @@ int sum = z++ + z;
 // z++ возвращает 3 и делает z равным 4. Затем прибавляется уже новое значение z (4).
 // Итог: 3 + 4 = 7
 Console.WriteLine($"3. Результат z++ + z (где z=3): {sum}");
+
+Console.WriteLine();
+Console.WriteLine("Расчет скидки");
+
+Console.Write("Введите сумму покупки: ");
+double purchaseAmount = double.Parse(Console.ReadLine());
+
+Console.Write("Есть ли карта постоянного клиента? (1 - да, 0 - нет): ");
+int hasCardInput = int.Parse(Console.ReadLine());
+bool hasLoyaltyCard = (hasCardInput == 1);
+
+Console.Write("Введите количество товаров в чеке: ");
+int itemCount = int.Parse(Console.ReadLine());
+
+bool isSumEnough = purchaseAmount >= 3000;
+bool isItemsEnough = itemCount >= 3;
+bool isSumAndItemsOk = isSumEnough && isItemsEnough;
+bool eligibleForDiscount = isSumAndItemsOk || hasLoyaltyCard;
+
+Console.WriteLine($"Сумма покупки >= 3000: {isSumEnough}");
+Console.WriteLine($"Товаров в чеке >= 3: {isItemsEnough}");
+Console.WriteLine($"Сумма >= 3000 И товаров >= 3: {isSumAndItemsOk}");
+Console.WriteLine($"Есть карта постоянного клиента: {hasLoyaltyCard}");
+Console.WriteLine($"Итоговый результат (положена скидка): {eligibleForDiscount}");
